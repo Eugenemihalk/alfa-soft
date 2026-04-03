@@ -26,10 +26,9 @@ export function Hero() {
             loop
             playsInline
             preload="auto"
-            poster="/1jpeg.jpeg"
             aria-hidden
           >
-            <source src="/upscaled-anim.mp4" type="video/mp4" />
+            <source src="/videos/upscaled-anim.mp4" type="video/mp4" />
           </video>
         </div>
         <div className={styles.bgScrim} aria-hidden />
