@@ -22,11 +22,11 @@ export function ContactSection() {
     const email = String(fd.get("email") ?? "").trim();
     const message = String(fd.get("message") ?? "").trim();
     setFormHint(null);
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY?.trim();
+    const accessKey = process.env.NEXT_PUBLIC_FORM_ID?.trim();
     if (!accessKey) {
       setFormHint({
         kind: "err",
-        text: "Не задан NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY в .env.local — см. .env.example",
+        text: "Не задан NEXT_PUBLIC_FORM_ID в .env.local — см. .env.example",
       });
       return;
     }
