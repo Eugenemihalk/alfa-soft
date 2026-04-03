@@ -16,7 +16,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "alfa-soft | Алфа Групп",
+  title: "Алфа Групп",
   description:
     "Премиальное строительство и реализация архитектурных проектов для дизайнеров и архитекторов.",
 };

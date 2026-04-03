@@ -286,6 +286,7 @@
   .inner {
     flex-wrap: nowrap;
     row-gap: 0;
+    margin-top: -81px;
   }
 
   .nav {
