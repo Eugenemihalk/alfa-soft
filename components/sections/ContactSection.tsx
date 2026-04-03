@@ -33,22 +33,21 @@ export function ContactSection() {
     setSending(true);
     try {
       // Web3Forms: бесплатный тариф принимает запросы только с клиента (не с API-роута).
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+      const res = await fetch(
+        "https://formspree.io/f/" + process.env.NEXT_PUBLIC_FORM_ID,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: name || "—",
+            email,
+            message,
+            subject: `Заявка с сайта — ${name}`,
+          }),
         },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: name
-            ? `Заявка с сайта — ${name}`
-            : "Заявка с сайта Алфа Групп",
-          name: name || "—",
-          email,
-          message,
-        }),
-      });
+      );
       const data = (await res.json().catch(() => ({}))) as {
         success?: boolean;
         message?: string;
@@ -149,12 +148,7 @@ export function ContactSection() {
               </label>
               <label className={styles.field}>
                 <span>Сообщение</span>
-                <textarea
-                  name="message"
-                  rows={4}
-                  required
-                  minLength={3}
-                />
+                <textarea name="message" rows={4} required minLength={3} />
               </label>
               <MagneticButton
                 type="submit"
