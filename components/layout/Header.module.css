@@ -4,6 +4,8 @@
   left: 0;
   right: 0;
   z-index: 40;
+  /* iOS: keep bar content below status / Dynamic Island; background still fills the inset */
+  padding-top: env(safe-area-inset-top, 0px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.6s cubic-bezier(0.32, 0.72, 0, 1);
 }
@@ -11,7 +13,8 @@
 .inner {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1.25rem var(--space-gutter);
+  padding: 1.25rem max(var(--space-gutter), env(safe-area-inset-right, 0px))
+    1.25rem max(var(--space-gutter), env(safe-area-inset-left, 0px));
   display: flex;
   align-items: center;
   justify-content: space-between;

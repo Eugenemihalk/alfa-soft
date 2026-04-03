@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   title: "alfa-soft | Алфа Групп",
   description:
     "Премиальное строительство и реализация архитектурных проектов для дизайнеров и архитекторов.",
+};
+
+/** Lets the page use the full screen; `env(safe-area-inset-*)` then clears notch / Dynamic Island. */
+export const viewport: Viewport = {
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
