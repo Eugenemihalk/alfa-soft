@@ -127,6 +127,27 @@
   margin-top: 0.25rem;
 }
 
+.submit:disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.formStatus {
+  margin: 0;
+  min-height: 1.35em;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+}
+
+.formStatusSuccess {
+  color: rgba(196, 165, 116, 0.95);
+}
+
+.formStatusError {
+  color: #e8a598;
+}
+
 .bottom {
   margin-top: clamp(3rem, 6vw, 4rem);
   padding-top: 1.5rem;

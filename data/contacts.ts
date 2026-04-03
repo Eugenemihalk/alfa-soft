@@ -5,10 +5,12 @@
 /** Единые контакты сайта — телефон в tel/wa совпадает. */
 export const CONTACT = {
   phone: {
-    /** Для href="tel:..." */
     tel: "+79051636954",
-    /** Как показываем в интерфейсе */
+
     display: "+7 (905) 163-69-54",
+  },
+  email: {
+    address: "alfa.montazh@mail.ru",
   },
   social: [
     { label: "Telegram", href: "https://t.me/alex_panaskov" },
