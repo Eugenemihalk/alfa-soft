@@ -39,6 +39,7 @@ export function ContactSection() {
           method: "POST",
           headers: {
             Accept: "application/json",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             name: name || "—",
@@ -49,28 +50,32 @@ export function ContactSection() {
         },
       );
       const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
         success?: boolean;
+        next?: string;
         message?: string;
+        error?: string;
       };
+      const isOk = data.ok === true || data.success === true;
       if (!res.ok) {
         const err =
-          typeof data.message === "string" && data.message
-            ? data.message
-            : "Не удалось отправить. Попробуйте ещё раз.";
+          (typeof data.error === "string" && data.error) ||
+          (typeof data.message === "string" && data.message) ||
+          "Не удалось отправить. Попробуйте ещё раз.";
         setFormHint({ kind: "err", text: err });
         return;
       }
-      if (data.success !== true) {
+      if (!isOk) {
         const err =
-          typeof data.message === "string" && data.message
-            ? data.message
-            : "Не удалось отправить. Попробуйте ещё раз.";
+          (typeof data.error === "string" && data.error) ||
+          (typeof data.message === "string" && data.message) ||
+          "Не удалось отправить. Попробуйте ещё раз.";
         setFormHint({ kind: "err", text: err });
         return;
       }
       setFormHint({
         kind: "ok",
-        text: "Сообщение отправлено. Мы свяжемся с вами по указанной почте.",
+        text: "Форма успешно отправлена. С вами свяжутся.",
       });
       form.reset();
     } catch {
